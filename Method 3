@@ -1,0 +1,30 @@
+from math import sqrt
+
+
+def checkPrime(num):
+    #  0, 1 and negative numbers are not prime
+    if num < 2:
+        return 0
+    else:
+
+        # A number n is not a prime, if it can be factored into two factors a & b:
+        # n = a * b
+
+        """Now a and b can't be both greater than the square root of n, since
+        then the product a * b would be greater than sqrt(n) * sqrt(n) = n.
+        So in any factorization of n, at least one of the factors must be
+        smaller than the square root of n, and if we can't find any factors
+        less than or equal to the square root, n must be a prime."""
+
+        for j in range(2, int(sqrt(num))):
+            if num % j == 0:
+                return 0
+
+    # the number would be prime if we reach here
+    return 1
+
+
+a, b = 1, 100
+for i in range(a, b + 1):
+    if checkPrime(i):
+        print(i, end=" ")
